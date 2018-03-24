@@ -1,12 +1,12 @@
 package com.first;
 
-public class WeightedQuickUnion {
+public class WeightedQUPathCompression {
 
 	public int[] id;
 	private int[] sz;
 	private int[] large;
 
-	public WeightedQuickUnion(int N) {
+	public WeightedQUPathCompression(int N) {
 		id = new int[N];
 		sz = new int[N];
 		large = new int[N];
@@ -15,12 +15,11 @@ public class WeightedQuickUnion {
 			sz[i] = 1;
 			large[i] = i;
 		}
-		
 	}
 	
 	public int root(int n) {
 		while(n != id[n]) {
-			id[n] = id[id[n]];
+			id[n] = id[id[n]]; //Path Compression
 			n = id[n];
 		}
 		return n;
@@ -59,7 +58,7 @@ public class WeightedQuickUnion {
 	}
 	
 	public static void main(String[] args) {
-		WeightedQuickUnion container = new WeightedQuickUnion(20);
+		WeightedQUPathCompression container = new WeightedQUPathCompression(20);
 		int even = 0, odd = 1;
 		for(int i=1; i<20; i++) {
 			if(i%2==1) {
